@@ -5,6 +5,7 @@ sentinel/Procfile
 npm-debug.log
 node_modules
 node_modules_backup
+backups/
 /scripts/node_modules/
 /scripts/token.json
 /config.js
@@ -32,6 +33,7 @@ allure*
 tests/config-temp
 .eslintcache
 doc-conflicts/
+docker-compose/
 cht-docker-compose.log
 tests/cht-core-test.yml
 tests/cht-couchdb-test.yml
