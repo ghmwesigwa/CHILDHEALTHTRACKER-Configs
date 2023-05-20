@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
+  <h:head>
+    <h:title>Assess patient</h:title>
+    <model>
+      <instance>
+        <assessment id="assessment" prefix="J1!assessment!" delimiter="#" version="1">
+          <patient_age/>
+          <fever/>
+          <fever_duration/>
+          <danger_signs/>
+          <referral_note/>
+          <immunization_status/>
+          <hiv_exposure/>
+          <tb_exposure/>
+          <meta tag="hidden">
+            <instanceID/>
+            <instanceName/>
+          </meta>
+        </assessment>
+      </instance>
+      <instance id="contact-summary"/>
+      <bind nodeset="/assessment/patient_age" type="int" required="true()"/>
+      <bind nodeset="/assessment/fever" type="select1" required="true()"/>
+      <bind nodeset="/assessment/fever_duration" type="select1" required="true()" relevant=" /assessment/fever  = 'yes'"/>
+      <bind nodeset="/assessment/danger_signs" type="select" required="true()"/>
+      <bind nodeset="/assessment/referral_note" readonly="true()" type="string" relevant=" /assessment/fever  = 'yes' and count-selected( /assessment/danger_signs ) &gt; 0"/>
+      <bind nodeset="/assessment/immunization_status" type="select1" relevant=" /assessment/patient_age  &lt; 2"/>
+      <bind nodeset="/assessment/hiv_exposure" type="select1" relevant=" /assessment/patient_age  &lt; 5"/>
+      <bind nodeset="/assessment/tb_exposure" type="select1" relevant=" /assessment/patient_age  &lt; 5"/>
+      <bind nodeset="/assessment/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <bind nodeset="/assessment/meta/instanceName" type="string" calculate="en"/>
+    </model>
+  </h:head>
+  <h:body class="pages">
+    <input ref="/assessment/patient_age">
+      <label>What is the age of the patient:</label>
+    </input>
+    <select1 ref="/assessment/fever">
+      <label>Does {patient_name} have a fever?</label>
+      <item>
+        <label>Yes</label>
+        <value>yes</value>
+      </item>
+      <item>
+        <label>No</label>
+        <value>no</value>
+      </item>
+    </select1>
+    <select1 ref="/assessment/fever_duration">
+      <label>How long has the child had fever?</label>
+      <item>
+        <label>Yes</label>
+        <value>yes</value>
+      </item>
+      <item>
+        <label>No</label>
+        <value>no</value>
+      </item>
+    </select1>
+    <select ref="/assessment/danger_signs">
+      <label>Does {patient_name} have any of the danger signs below?</label>
+      <item>
+        <label>Fast breathing</label>
+        <value>fast_breathing</value>
+      </item>
+      <item>
+        <label>Convulsions</label>
+        <value>convulsions</value>
+      </item>
+      <item>
+        <label>Vomiting</label>
+        <value>vomiting</value>
+      </item>
+      <item>
+        <label>Unconscious</label>
+        <value>unconscious</value>
+      </item>
+      <item>
+        <label>Yellow eyes</label>
+        <value>yellow_eyes</value>
+      </item>
+    </select>
+    <input ref="/assessment/referral_note">
+      <label>Refer {patient_name} to the nearest health facility</label>
+    </input>
+    <select1 ref="/assessment/immunization_status">
+      <label>Is the child's immunization up to date?</label>
+      <item>
+        <label>Yes</label>
+        <value>yes</value>
+      </item>
+      <item>
+        <label>No</label>
+        <value>no</value>
+      </item>
+    </select1>
+    <select1 ref="/assessment/hiv_exposure">
+      <label>Does the child have any contact or exposure to HIV?</label>
+      <item>
+        <label>Yes</label>
+        <value>yes</value>
+      </item>
+      <item>
+        <label>No</label>
+        <value>no</value>
+      </item>
+    </select1>
+    <select1 ref="/assessment/tb_exposure">
+      <label>Does the child have any contact or exposure to TB?</label>
+      <item>
+        <label>Yes</label>
+        <value>yes</value>
+      </item>
+      <item>
+        <label>No</label>
+        <value>no</value>
+      </item>
+    </select1>
+  </h:body>
+</h:html>
