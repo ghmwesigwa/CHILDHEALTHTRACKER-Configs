@@ -1,0 +1,28 @@
+{
+    "coreVersion": "3.14.0",
+    "user": "chw_id",
+    "subject": "patient_id",
+    "ownedBySubject": true,
+    "docs": [
+      {
+        "_id": "assessment_id",
+        "type": "assessment",
+        "child": "patient_id",
+        "fever": true,
+        "danger_signs": ["danger_sign_1", "danger_sign_2"]
+      },
+      {
+        "_id": "task_id",
+        "type": "task",
+        "child": "patient_id",
+        "status": "resolved",
+        "follow_up": true
+      },
+      {
+        "_id": "referral_id",
+        "type": "referral",
+        "child": "patient_id"
+      }
+    ]
+  }
+  
