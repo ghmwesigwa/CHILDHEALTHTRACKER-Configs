@@ -7,14 +7,13 @@ const describe = _describe;
 const before = _before;
 const after = _after;
 const it = _it;
-harness = new TestRunner();
+
+const harness = new TestRunner();
 
 describe('Referral Follow-up Task', () => {
-  let harness;
 
   before(async () => {
-
-    return await harness.start();
+    await harness.start();
   });
 
   after(async () => {

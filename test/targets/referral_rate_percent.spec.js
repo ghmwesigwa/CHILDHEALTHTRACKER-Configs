@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import TestRunner from 'cht-conf-test-harness';
-import harnessDefaults from './harness.defaults.json';
+//import harnessDefaults from './harness.defaults.json';
 import { describe as _describe, before as _before, after as _after, it as _it } from 'mocha';
 import { getReferralRate } from '../formReportUtils';
 
