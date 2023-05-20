@@ -3,9 +3,9 @@ sentinel/settings.js
 sentinel/settings-test.js
 sentinel/Procfile
 npm-debug.log
-node_modules/
-node_modules_backup
-backups/
+/node_modules
+/node_modules_backup
+/backups
 /scripts/node_modules/
 /scripts/token.json
 /config.js
