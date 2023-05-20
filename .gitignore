@@ -3,7 +3,7 @@ sentinel/settings.js
 sentinel/settings-test.js
 sentinel/Procfile
 npm-debug.log
-node_modules
+node_modules/
 node_modules_backup
 backups/
 /scripts/node_modules/
@@ -27,6 +27,7 @@ dist
 /local-build/
 api/**/extracted-resources/**/*
 api/build/**/*
+.snapshots 
 /**/*/.snapshots/local.json
 tests/integration/results/
 allure*
