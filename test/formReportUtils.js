@@ -1,37 +1,39 @@
-// check if a report represents an assessment
-export function isAssessment(report) {
-    return report.form === 'assessment';
-  }
+// Import the TestRunner class
+import TestRunner from 'cht-conf-test-harness';
 
-  // check if a report represents a referral
-  export function isReferral(report) {
-    return report.form === 'referral_follow_up';
-  }
+// Create an instance of the TestRunner class
+const harness = new TestRunner();
 
-  // Get the assessment count target
-  export function getAssessmentCountTarget(reports) {
-    // Filter assessment reports
-    const assessmentReports = reports.filter(isAssessment);
+// Check if a report represents an assessment
+export const isAssessment = (report) => report.form === 'assessment';
 
-    // Get the count of assessment reports
-    const assessmentCount = assessmentReports.length;
+// Check if a report represents a referral
+export const isReferral = (report) => report.form === 'referral_follow_up';
 
-    return assessmentCount;
-  }
+// Get the assessment count target using the TestRunner instance
+export const getAssessmentCountTarget = (reports) => {
+  // Filter assessment reports
+  const assessmentReports = reports.filter(isAssessment);
 
-  // Get the referral rate
-  export function getReferralRate(reports) {
-    // Filter referral reports
-    const referralReports = reports.filter(isReferral);
+  // Get the count of assessment reports
+  const assessmentCount = assessmentReports.length;
 
-    // Get the count of referral reports
-    const referralCount = referralReports.length;
+  return assessmentCount;
+};
 
-    // Get the count of assessment reports
-    const assessmentCount = reports.filter(isAssessment).length;
+// Get the referral rate
+export const getReferralRate = (reports) => {
+  // Filter referral reports
+  const referralReports = reports.filter(isReferral);
 
-    // Calculate the referral rate
-    const referralRate = (referralCount / assessmentCount) * 100;
+  // Get the count of referral reports
+  const referralCount = referralReports.length;
 
-    return referralRate;
-  }
+  // Get the count of assessment reports
+  const assessmentCount = reports.filter(isAssessment).length;
+
+  // Calculate the referral rate
+  const referralRate = (referralCount / assessmentCount) * 100;
+
+  return referralRate;
+};
