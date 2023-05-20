@@ -1,0 +1,68 @@
+<form autocomplete="off" novalidate="novalidate" class="or clearfix pages" dir="ltr" data-form-id="assessment">
+<section class="form-logo"></section><h3 dir="auto" id="form-title">Assess patient</h3>
+  
+  
+    <label class="question non-select "><span lang="" class="question-label active">What is the age of the patient:</span><span class="required">*</span><input type="number" name="/assessment/patient_age" data-required="true()" data-type-xml="int"><span class="or-required-msg active" lang="" data-i18n="constraint.required">This field is required</span></label>
+    <fieldset class="question simple-select ">
+<fieldset>
+<legend>
+<span lang="" class="question-label active">Does {patient_name} have a fever?</span><span class="required">*</span>
+          </legend>
+<div class="option-wrapper">
+<label class=""><input type="radio" name="/assessment/fever" data-name="/assessment/fever" value="yes" data-required="true()" data-type-xml="select1"><span lang="" class="option-label active">Yes</span></label><label class=""><input type="radio" name="/assessment/fever" data-name="/assessment/fever" value="no" data-required="true()" data-type-xml="select1"><span lang="" class="option-label active">No</span></label>
+</div>
+</fieldset>
+<span class="or-required-msg active" lang="" data-i18n="constraint.required">This field is required</span>
+</fieldset>
+    <fieldset class="question simple-select or-branch pre-init ">
+<fieldset>
+<legend>
+<span lang="" class="question-label active">How long has the child had fever?</span><span class="required">*</span>
+          </legend>
+<div class="option-wrapper">
+<label class=""><input type="radio" name="/assessment/fever_duration" data-name="/assessment/fever_duration" value="yes" data-required="true()" data-relevant=" /assessment/fever  = 'yes'" data-type-xml="select1"><span lang="" class="option-label active">Yes</span></label><label class=""><input type="radio" name="/assessment/fever_duration" data-name="/assessment/fever_duration" value="no" data-required="true()" data-relevant=" /assessment/fever  = 'yes'" data-type-xml="select1"><span lang="" class="option-label active">No</span></label>
+</div>
+</fieldset>
+<span class="or-required-msg active" lang="" data-i18n="constraint.required">This field is required</span>
+</fieldset>
+    <fieldset class="question simple-select ">
+<fieldset>
+<legend>
+<span lang="" class="question-label active">Does {patient_name} have any of the danger signs below?</span><span class="required">*</span>
+          </legend>
+<div class="option-wrapper">
+<label class=""><input type="checkbox" name="/assessment/danger_signs" value="fast_breathing" data-required="true()" data-type-xml="select"><span lang="" class="option-label active">Fast breathing</span></label><label class=""><input type="checkbox" name="/assessment/danger_signs" value="convulsions" data-required="true()" data-type-xml="select"><span lang="" class="option-label active">Convulsions</span></label><label class=""><input type="checkbox" name="/assessment/danger_signs" value="vomiting" data-required="true()" data-type-xml="select"><span lang="" class="option-label active">Vomiting</span></label><label class=""><input type="checkbox" name="/assessment/danger_signs" value="unconscious" data-required="true()" data-type-xml="select"><span lang="" class="option-label active">Unconscious</span></label><label class=""><input type="checkbox" name="/assessment/danger_signs" value="yellow_eyes" data-required="true()" data-type-xml="select"><span lang="" class="option-label active">Yellow eyes</span></label>
+</div>
+</fieldset>
+<span class="or-required-msg active" lang="" data-i18n="constraint.required">This field is required</span>
+</fieldset>
+    <label class="question or-branch pre-init non-select "><span lang="" class="question-label active">Refer {patient_name} to the nearest health facility</span><input type="text" name="/assessment/referral_note" data-relevant=" /assessment/fever  = 'yes' and count-selected( /assessment/danger_signs ) &gt; 0" data-type-xml="string" readonly></label>
+    <fieldset class="question simple-select or-branch pre-init "><fieldset>
+<legend>
+<span lang="" class="question-label active">Is the child's immunization up to date?</span>
+          </legend>
+<div class="option-wrapper">
+<label class=""><input type="radio" name="/assessment/immunization_status" data-name="/assessment/immunization_status" value="yes" data-relevant=" /assessment/patient_age  &lt; 2" data-type-xml="select1"><span lang="" class="option-label active">Yes</span></label><label class=""><input type="radio" name="/assessment/immunization_status" data-name="/assessment/immunization_status" value="no" data-relevant=" /assessment/patient_age  &lt; 2" data-type-xml="select1"><span lang="" class="option-label active">No</span></label>
+</div>
+</fieldset></fieldset>
+    <fieldset class="question simple-select or-branch pre-init "><fieldset>
+<legend>
+<span lang="" class="question-label active">Does the child have any contact or exposure to HIV?</span>
+          </legend>
+<div class="option-wrapper">
+<label class=""><input type="radio" name="/assessment/hiv_exposure" data-name="/assessment/hiv_exposure" value="yes" data-relevant=" /assessment/patient_age  &lt; 5" data-type-xml="select1"><span lang="" class="option-label active">Yes</span></label><label class=""><input type="radio" name="/assessment/hiv_exposure" data-name="/assessment/hiv_exposure" value="no" data-relevant=" /assessment/patient_age  &lt; 5" data-type-xml="select1"><span lang="" class="option-label active">No</span></label>
+</div>
+</fieldset></fieldset>
+    <fieldset class="question simple-select or-branch pre-init "><fieldset>
+<legend>
+<span lang="" class="question-label active">Does the child have any contact or exposure to TB?</span>
+          </legend>
+<div class="option-wrapper">
+<label class=""><input type="radio" name="/assessment/tb_exposure" data-name="/assessment/tb_exposure" value="yes" data-relevant=" /assessment/patient_age  &lt; 5" data-type-xml="select1"><span lang="" class="option-label active">Yes</span></label><label class=""><input type="radio" name="/assessment/tb_exposure" data-name="/assessment/tb_exposure" value="no" data-relevant=" /assessment/patient_age  &lt; 5" data-type-xml="select1"><span lang="" class="option-label active">No</span></label>
+</div>
+</fieldset></fieldset>
+  
+<fieldset id="or-calculated-items" style="display:none;">
+<label class="calculation non-select "><input type="hidden" name="/assessment/meta/instanceID" data-calculate="concat('uuid:', uuid())" data-type-xml="string"></label><label class="calculation non-select "><input type="hidden" name="/assessment/meta/instanceName" data-calculate="en" data-type-xml="string"></label>
+</fieldset>
+</form>

@@ -1,0 +1,15 @@
+
+  <model>
+    <instance>
+        <referral_follow_up xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" id="referral_follow_up" prefix="J1!referral_follow_up!" delimiter="#" version="1">
+          <child_went_to_facility/>
+          <child_getting_better/>
+          <meta tag="hidden">
+            <instanceID/>
+            <instanceName/>
+          </meta>
+        </referral_follow_up>
+      </instance>
+    <instance id="contact-summary"/>
+  </model>
+

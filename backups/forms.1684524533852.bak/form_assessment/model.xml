@@ -1,0 +1,21 @@
+
+  <model>
+    <instance>
+        <assessment xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" id="assessment" prefix="J1!assessment!" delimiter="#" version="1">
+          <patient_age/>
+          <fever/>
+          <fever_duration/>
+          <danger_signs/>
+          <referral_note/>
+          <immunization_status/>
+          <hiv_exposure/>
+          <tb_exposure/>
+          <meta tag="hidden">
+            <instanceID/>
+            <instanceName/>
+          </meta>
+        </assessment>
+      </instance>
+    <instance id="contact-summary"/>
+  </model>
+
