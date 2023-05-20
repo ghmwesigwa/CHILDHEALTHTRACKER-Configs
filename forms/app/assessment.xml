@@ -5,6 +5,14 @@
     <model>
       <instance>
         <assessment id="assessment" prefix="J1!assessment!" delimiter="#" version="1">
+          <contact>
+            <_id/>
+            <patient_id/>
+            <name/>
+            <date_of_birth/>
+            <sex/>
+            <phone/>
+          </contact>
           <patient_age/>
           <fever/>
           <fever_duration/>
@@ -20,6 +28,12 @@
         </assessment>
       </instance>
       <instance id="contact-summary"/>
+      <bind nodeset="/assessment/contact/_id" type="db:person" required="true()"/>
+      <bind nodeset="/assessment/contact/patient_id" type="string"/>
+      <bind nodeset="/assessment/contact/name" type="string"/>
+      <bind nodeset="/assessment/contact/date_of_birth" type="string"/>
+      <bind nodeset="/assessment/contact/sex" type="string"/>
+      <bind nodeset="/assessment/contact/phone" type="string"/>
       <bind nodeset="/assessment/patient_age" type="int" required="true()"/>
       <bind nodeset="/assessment/fever" type="select1" required="true()"/>
       <bind nodeset="/assessment/fever_duration" type="select1" required="true()" relevant=" /assessment/fever  = 'yes'"/>
@@ -33,6 +47,14 @@
     </model>
   </h:head>
   <h:body class="pages">
+    <group ref="/assessment/contact">
+      <input appearance="db-object" ref="/assessment/contact/_id"/>
+      <input appearance="hidden" ref="/assessment/contact/patient_id"/>
+      <input appearance="hidden" ref="/assessment/contact/name"/>
+      <input appearance="hidden" ref="/assessment/contact/date_of_birth"/>
+      <input appearance="hidden" ref="/assessment/contact/sex"/>
+      <input appearance="hidden" ref="/assessment/contact/phone"/>
+    </group>
     <input ref="/assessment/patient_age">
       <label>What is the age of the patient:</label>
     </input>
